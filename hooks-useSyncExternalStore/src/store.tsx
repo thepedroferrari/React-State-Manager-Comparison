@@ -13,13 +13,14 @@ export default function createStore<Shape>(initialState: Shape) {
     listeners.add(listener);
     return () => listeners.delete(listener);
   };
+  const setState = (newState: Shape) => {
+    currentState = newState;
+    listeners.forEach((listener) => listener(currentState));
+  };
 
   return {
     getState: () => currentState,
-    setState: (newState: Shape) => {
-      currentState = newState;
-      listeners.forEach((listener) => listener(currentState));
-    },
+    setState,
     subscribe,
   };
 }
