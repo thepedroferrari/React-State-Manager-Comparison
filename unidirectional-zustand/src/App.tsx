@@ -87,7 +87,7 @@ const NameFormInput = () => {
 };
 
 const EmailFormInput = () => {
-  const email = useApplicationState((state) => state.email);
+  const email = useApplicationState(({ email }) => email);
   const setEmail = useApplicationState((state) => state.setEmail);
   return (
     <div className="w-full px-3">
@@ -153,7 +153,7 @@ const TextAreaFormInput = () => (
 );
 
 const SubmitFormButton = () => {
-  const gdpr = useApplicationState((state) => state.gdpr);
+  const gdpr = useApplicationState(({ gdpr }) => gdpr);
   const onToggleGdpr = useApplicationState((state) => state.onToggleGdpr);
   return (
     <div className="flex justify-between w-full px-3">
