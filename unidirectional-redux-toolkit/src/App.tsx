@@ -1,7 +1,19 @@
 import { useGetPokemonByNameQuery } from './useGetPokemonByNameQuery';
 
 export default function App() {
-  const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur');
+  return (
+    <div className="App">
+      <Pokemon name="pikachu" />
+      <Pokemon name="charizard" />
+      <Pokemon name="squirtle" />
+      <Pokemon name="bulbasaur" />
+      <Pokemon name="mewtwo" />
+    </div>
+  );
+}
+
+const Pokemon = ({ name }: { name: string }) => {
+  const { data, error, isLoading } = useGetPokemonByNameQuery(name);
 
   if (isLoading) return <div>Loading...</div>;
   if (error)
@@ -21,4 +33,4 @@ export default function App() {
       <img src={data.sprites.back_shiny} alt={data.name} />
     </div>
   );
-}
+};
